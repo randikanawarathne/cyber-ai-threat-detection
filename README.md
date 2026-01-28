@@ -36,13 +36,41 @@ cd cyber-ai-threat-detection
 git clone https://github.com/randikanawarathne/cyber-ai-threat-detection.git
 cd cyber-ai-threat-detection
 
+<<<<<<< HEAD
 # 2. Make the script executable and run
 chmod +x run.sh
 ./run.sh
+=======
+## 📁 Project Structure
+cyber-ai-threat-detection/
+├── .gitignore
+├── README.md
+├── LICENSE
+├── requirements.txt
+├── main.py
+├── setup.py
+├── run.py
+├── run.ps1
+├── run.bat
+├── src/
+│   ├── __init__.py
+│   ├── detect_threats.py
+│   ├── train_model.py
+│   └── preprocess.py
+├── data/               (ignored in git)
+│   └── sample_data.csv (optional sample)
+├── models/             (ignored in git)
+├── reports/            (ignored in git)
+├── notebooks/
+│   └── exploratory_analysis.ipynb
+└── docs/
+    └── API.md
+>>>>>>> ca0b9c8eeabdd2401f3f011c715080fac772f306
 
 # 3. Select option 1 (Train ML Models) from the menu
 
 
+<<<<<<< HEAD
 ### **For Everyone (Python Directly):**
 
 # 1. Clone the repository
@@ -698,3 +726,10 @@ If this project helped you:
 
 *Last updated: January 2024*  *By Randika Nawarathne*
 *Maintained with ❤️ for the cybersecurity community*
+=======
+## 🔮 Future Enhancements
+- Integration with SIEM tools (Splunk, Elastic)
+- Real-time streaming with Apache Kafka
+- Deep learning models (LSTM for sequential data)
+- Cloud deployment (AWS/Azure security services)
+>>>>>>> ca0b9c8eeabdd2401f3f011c715080fac772f306
