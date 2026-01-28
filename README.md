@@ -23,7 +23,29 @@ Dataset → Preprocessing → Feature Engineering → ML Model → Threat Classi
 - Optional: Flask/Dash for dashboard
 
 ## 📁 Project Structure
-[Same as above structure]
+cyber-ai-threat-detection/
+├── .gitignore
+├── README.md
+├── LICENSE
+├── requirements.txt
+├── main.py
+├── setup.py
+├── run.py
+├── run.ps1
+├── run.bat
+├── src/
+│   ├── __init__.py
+│   ├── detect_threats.py
+│   ├── train_model.py
+│   └── preprocess.py
+├── data/               (ignored in git)
+│   └── sample_data.csv (optional sample)
+├── models/             (ignored in git)
+├── reports/            (ignored in git)
+├── notebooks/
+│   └── exploratory_analysis.ipynb
+└── docs/
+    └── API.md
 
 ## 🚀 Quick Start
 1. Clone repository: `git clone https://github.com/randikanawarathne/cyber-ai-threat-detection.git`
