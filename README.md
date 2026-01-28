@@ -723,13 +723,12 @@ If this project helped you:
 **Happy threat hunting! 🎯🔍🛡️**
 
 ---
-
-*Last updated: January 2024*  *By Randika Nawarathne*
-*Maintained with ❤️ for the cybersecurity community*
 =======
 ## 🔮 Future Enhancements
 - Integration with SIEM tools (Splunk, Elastic)
 - Real-time streaming with Apache Kafka
 - Deep learning models (LSTM for sequential data)
 - Cloud deployment (AWS/Azure security services)
->>>>>>> ca0b9c8eeabdd2401f3f011c715080fac772f306
+
+*Last updated: January 2026*  *By Randika Nawarathne*
+*Rough X Developers </>*
