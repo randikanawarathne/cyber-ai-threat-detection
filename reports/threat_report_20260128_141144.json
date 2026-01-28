@@ -1,0 +1,26 @@
+{
+  "report_generated": "2026-01-28T14:11:44.934532",
+  "detection_period": {
+    "start": "2026-01-28T14:11:44.934532",
+    "end": "2026-01-28T14:11:44.934532"
+  },
+  "summary": {
+    "total_logs_analyzed": 100,
+    "total_threats_detected": 0,
+    "threats_by_severity": {
+      "CRITICAL": 0,
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0,
+      "INFO": 0
+    },
+    "detection_rate": 0.0
+  },
+  "detected_threats": [],
+  "analysis_notes": [
+    "Analysis performed by AI-Driven Cyber Threat Detection System",
+    "Confidence threshold: 70%",
+    "Models used: Random Forest Classifier",
+    "For investigation purposes only"
+  ]
+}
