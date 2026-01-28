@@ -19,7 +19,7 @@
 ## 🚀 **QUICK START (1 Minute)**
 
 ### **For Windows Users:**
-powershell
+
 # 1. Download the project
 git clone https://github.com/randikanawarathne/cyber-ai-threat-detection.git
 cd cyber-ai-threat-detection
@@ -65,12 +65,11 @@ cyber-ai-threat-detection/
 │   └── exploratory_analysis.ipynb
 └── docs/
     └── API.md
->>>>>>> ca0b9c8eeabdd2401f3f011c715080fac772f306
+
 
 # 3. Select option 1 (Train ML Models) from the menu
 
 
-<<<<<<< HEAD
 ### **For Everyone (Python Directly):**
 
 # 1. Clone the repository
@@ -82,9 +81,6 @@ pip install -r requirements.txt
 
 # 3. Run the system
 python main.py
-
-
----
 
 ## 🎯 **Project Overview**
 
@@ -107,8 +103,6 @@ This system uses **Machine Learning** to analyze network/system logs and detect 
 - 🎓 **ML Engineers** - Cybersecurity application
 - 🔒 **Security Researchers** - Prototyping tool
 
----
-
 ## 📦 **INSTALLATION GUIDE (Step-by-Step)**
 
 ### **Step 1: Prerequisites Check**
@@ -128,7 +122,6 @@ pip --version
 
 git --version
 # Should show git version
-
 
 ### **Step 2: Download the Project**
 
@@ -150,7 +143,6 @@ cd cyber-ai-threat-detection
 
 pip install -r requirements.txt
 
-
 **Option B: Manual Installation (If Option A fails)**
 
 # Install core packages one by one
@@ -161,7 +153,6 @@ pip install matplotlib==3.7.2
 pip install seaborn==0.12.2
 pip install joblib==1.3.1
 
-
 **Option C: Using Virtual Environment (Best Practice)**
 
 # Create virtual environment
@@ -170,12 +161,12 @@ python -m venv venv
 # Activate it
 # Windows:
 venv\Scripts\activate
+
 # Mac/Linux:
 source venv/bin/activate
 
 # Install requirements
 pip install -r requirements.txt
-
 
 ### **Step 4: Verify Installation**
 
@@ -188,9 +179,6 @@ print('✅ All packages installed successfully!')
 print(f'Pandas version: {pd.__version__}')
 print(f'NumPy version: {np.__version__}')
 "
-
-
----
 
 ## 🛠️ **HOW TO USE (Step-by-Step)**
 
@@ -208,14 +196,12 @@ You'll see this menu:
   [5] 📖 View Reports
   [6] 🚪 Exit
 
-
 **Step-by-step workflow:**
 1. **First, select [1] Train ML Models** - This creates sample data and trains the AI
 2. **Then, select [2] Real-time Threat Detection** - Run 30-second simulation
 3. **Check reports in `reports/` folder** - View JSON and visualization files
 
 ### **Method 2: Command Line Arguments**
-
 
 # Train models only
 python main.py --train
@@ -232,27 +218,23 @@ python main.py --test
 # Check requirements only
 python main.py --check
 
-
 ### **Method 3: Using Runner Scripts**
 
 **Windows (PowerShell):**
-powershell
+
 .\run.ps1
 
-
 **Windows (Command Prompt):**
-cmd
-.\run.bat
 
+.\run.bat
 
 **Mac/Linux:**
 
 chmod +x run.sh
 ./run.sh
 
-
 ### **Method 4: Direct Module Usage**
-python
+
 # In your Python code:
 import sys
 sys.path.append('src')
@@ -322,8 +304,6 @@ cyber-ai-threat-detection/
 - **Sample datasets** - Generated if no data exists
 - **Trained models** - Saved automatically after training
 
----
-
 ## 🤖 **ML MODELS USED**
 
 ### **Model 1: Random Forest (Main Model)**
@@ -351,8 +331,6 @@ The system automatically creates these features from raw logs:
 3. **Duration** (connection time)
 4. **Protocol Type** (TCP=0, UDP=1, etc.)
 5. **Time-based features** (hour of day, business hours)
-
----
 
 ## 📊 **SAMPLE OUTPUT**
 
@@ -388,12 +366,10 @@ json
   ]
 }
 
-
 ### **Visualization Files:**
 - `reports/confusion_matrix.png` - Model accuracy visualization
 - `reports/feature_importance.png` - What features matter most
 
----
 
 ## 🌐 **DEPLOYMENT OPTIONS**
 
@@ -412,7 +388,6 @@ pip install -r requirements.txt
 # 4. Run
 python main.py
 
-
 ### **Option 2: Docker Container**
 
 # 1. Build Docker image
@@ -424,7 +399,6 @@ docker run -p 5000:5000 cyber-threat-detector
 # 3. Or with volume for reports
 docker run -v $(pwd)/reports:/app/reports cyber-threat-detector
 
-
 **Dockerfile:**
 dockerfile
 FROM python:3.9-slim
@@ -435,7 +409,6 @@ COPY . .
 RUN mkdir -p data models reports
 EXPOSE 5000
 CMD ["python", "main.py"]
-
 
 ### **Option 3: Cloud Deployment**
 
@@ -463,8 +436,6 @@ The project includes `.github/workflows/python-ci.yml` for automatic testing:
 - Checks code quality with flake8
 - Runs unit tests
 - Generates demo reports
-
----
 
 ## 🔧 **TROUBLESHOOTING**
 
@@ -504,14 +475,14 @@ ls  # Should show main.py, src/, requirements.txt
 
 #### **Issue 5: "ImportError" in main.py**
 Add these lines at the **top** of your script:
-python
+
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 
 #### **Issue 6: Slow performance or memory issues**
-python
+
 # In detect_threats.py, reduce sample size:
 # Change this line (around line ~):
 n_samples = 1000  # Instead of 10000
@@ -535,9 +506,6 @@ python -c "import pandas; print(f'Pandas: {pandas.__version__}')"
 
 # 5. Check file paths
 python -c "import os; print(f'Current dir: {os.getcwd()}')"
-
-
----
 
 ## 📚 **LEARNING RESOURCES**
 
@@ -566,7 +534,6 @@ python -c "import os; print(f'Current dir: {os.getcwd()}')"
 - Discuss in **interviews** as applied ML example
 - Connect with **#cybersecurity** and **#machinelearning** on social media
 
----
 
 ## 📄 **LICENSE**
 
@@ -586,7 +553,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - The software is provided "as is"
 - No warranty of any kind
 
----
 
 ## 🆘 **GETTING HELP**
 
@@ -609,7 +575,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - **Email**: randikasl1234@gmail.com
 - **Twitter**: @randikanawarathne
 
----
 
 ## 🎓 **HOW THIS HELPS YOUR CAREER**
 
@@ -636,7 +601,6 @@ AI-Driven Cyber Threat Detection System
 - ✅ **Data Science**: Pandas, NumPy, data visualization
 - ✅ **DevOps**: GitHub, CI/CD, documentation
 
----
 
 ## 🚀 **NEXT STEPS AFTER SETUP**
 
@@ -668,7 +632,6 @@ cat src/train_model.py | head -50
 - Add **database support** (SQLite, PostgreSQL)
 - Create **Docker Compose** for full stack
 
----
 
 ## 📈 **PROJECT ROADMAP**
 
@@ -693,7 +656,6 @@ cat src/train_model.py | head -50
 - 🌟 Advanced visualization
 - 🌟 Mobile app
 
----
 
 ## 🙏 **ACKNOWLEDGMENTS**
 
@@ -703,8 +665,6 @@ cat src/train_model.py | head -50
 - **Open Source Community** - All contributors
 - **You** - For using and improving this project!
 
----
-
 ## ⭐ **SHOW YOUR SUPPORT**
 
 If this project helped you:
@@ -713,8 +673,6 @@ If this project helped you:
 3. **Follow** for updates
 4. **Contribute** improvements
 
----
-
 ## 🔄 **UPDATE LOG**
 
 - **Version 1.0.0** (Current): Initial release with core functionality
@@ -722,13 +680,11 @@ If this project helped you:
 
 **Happy threat hunting! 🎯🔍🛡️**
 
----
-=======
 ## 🔮 Future Enhancements
 - Integration with SIEM tools (Splunk, Elastic)
 - Real-time streaming with Apache Kafka
 - Deep learning models (LSTM for sequential data)
 - Cloud deployment (AWS/Azure security services)
 
-*Last updated: January 2026*  *By Randika Nawarathne*
-*Rough X Developers </>*
+*Last updated: January 2026*  
+*By Randika Nawarathne Creator of Rough X Developers </>*
