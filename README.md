@@ -14,8 +14,6 @@
 10. [📚 Learning Resources](#-learning-resources)
 11. [📄 License](#-license)
 
----
-
 ## 🚀 **QUICK START (1 Minute)**
 
 ### **For Windows Users:**
@@ -29,46 +27,41 @@ cd cyber-ai-threat-detection
 
 # 3. Select option 1 (Train ML Models) from the menu
 
-
 ### **For Mac/Linux Users:**
 
 # 1. Download the project
 git clone https://github.com/randikanawarathne/cyber-ai-threat-detection.git
 cd cyber-ai-threat-detection
 
-<<<<<<< HEAD
 # 2. Make the script executable and run
 chmod +x run.sh
 ./run.sh
-=======
+
 ## 📁 Project Structure
 cyber-ai-threat-detection/
-├── .gitignore
-├── README.md
-├── LICENSE
-├── requirements.txt
-├── main.py
-├── setup.py
-├── run.py
-├── run.ps1
-├── run.bat
-├── src/
-│   ├── __init__.py
-│   ├── detect_threats.py
-│   ├── train_model.py
-│   └── preprocess.py
-├── data/               (ignored in git)
-│   └── sample_data.csv (optional sample)
-├── models/             (ignored in git)
-├── reports/            (ignored in git)
-├── notebooks/
-│   └── exploratory_analysis.ipynb
-└── docs/
-    └── API.md
-
+.gitignore
+README.md
+LICENSErequirements.txt
+main.py
+setup.py
+run.py
+run.ps1
+run.bat
+src/
+__init__.py
+detect_threats.py
+train_model.py
+preprocess.py
+data/(ignored in git)
+sample_data.csv (optional sample)
+models/(ignored in git)
+reports/(ignored in git)
+notebooks/
+exploratory_analysis.ipynb
+docs/
+API.md
 
 # 3. Select option 1 (Train ML Models) from the menu
-
 
 ### **For Everyone (Python Directly):**
 
