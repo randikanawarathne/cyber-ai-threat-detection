@@ -250,44 +250,41 @@ if is_threat:
     print(f"🚨 Threat detected! Score: {alert['threat_score']}")
 
 
----
-
 ## 📁 **PROJECT STRUCTURE**
 
 Here's what each file and folder does:
 
 
 cyber-ai-threat-detection/
-│
-├── main.py                      ← 🚀 START HERE: Main entry point
-├── requirements.txt             ← 📦 Required Python packages
-├── README.md                    ← 📚 This documentation
-├── LICENSE                      ← ⚖️ MIT License
-│
-├── run.ps1                      ← 🪟 Windows PowerShell runner
-├── run.bat                      ← 🪟 Windows CMD runner
-├── run.sh                       ← 🐧 Linux/Mac runner
-│
-├── src/                         ← 🤖 SOURCE CODE
-│   ├── detect_threats.py        ← 🔍 Threat detection engine
-│   ├── train_model.py           ← 🎯 ML model training
-│   └── __init__.py              ← 📦 Package initializer
-│
-├── data/                        ← 📊 Sample data (auto-created)
-│   └── network_traffic_sample.csv
-│
-├── models/                      ← 🧠 Trained ML models (auto-created)
-│   └── random_forest_model.pkl
-│
-├── reports/                     ← 📄 Generated reports (auto-created)
-│   ├── threat_report_*.json     ← 📊 JSON reports
-│   └── *.png                    ← 📈 Visualizations
-│
-├── notebooks/                   ← 📓 Jupyter notebooks (optional)
-│   └── exploratory_analysis.ipynb
-│
-└── tests/                       ← 🧪 Unit tests (optional)
-    └── test_basic.py
+main.py ← 🚀 START HERE: Main entry point
+requirements.txt ← 📦 Required Python packages
+README.md ← 📚 This documentation
+LICENSE← ⚖️ MIT License
+run.ps1 ← 🪟 Windows PowerShell runner
+AI-Driven Cyber Threat Detection System.bat← 🪟 Windows CMD runner
+run.sh← 🐧 Linux/Mac runner
+
+src/ ← 🤖 SOURCE CODE
+detect_threats.py ← 🔍 Threat detection engine
+train_model.py← 🎯 ML model training
+ __init__.py← 📦 Package initializer
+
+data/← 📊 Sample data (auto-created)
+network_traffic_sample.csv
+
+ models/← 🧠 Trained ML models (auto-created)
+random_forest_model.pkl
+
+reports/ ← 📄 Generated reports (auto-created)
+
+threat_report_*.json← 📊 JSON reports
+*.png ← 📈 Visualizations
+
+notebooks/ ← 📓 Jupyter notebooks (optional)
+exploratory_analysis.ipynb
+
+tests/← 🧪 Unit tests (optional)
+test_basic.py
 
 
 ### **What Gets Auto-Created:**
