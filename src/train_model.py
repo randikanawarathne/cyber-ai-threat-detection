@@ -1,16 +1,7 @@
-def create_directories():
-    """Create necessary directories if they don't exist"""
-    directories = ['models', 'reports', 'data']
-    for directory in directories:
-        os.makedirs(directory, exist_ok=True)
-        print(f"✓ Created directory: {directory}")
-
-# Call at the start of main functions
-create_directories()
-
 """
 Train multiple ML models for threat detection
 """
+import os
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split, cross_val_score
@@ -20,6 +11,15 @@ from sklearn.metrics import classification_report, confusion_matrix, roc_auc_sco
 import joblib
 import matplotlib.pyplot as plt
 import seaborn as sns
+import warnings
+warnings.filterwarnings('ignore')
+
+def create_directories():
+    """Create necessary directories if they don't exist"""
+    directories = ['models', 'reports', 'data']
+    for directory in directories:
+        os.makedirs(directory, exist_ok=True)
+        print(f"✓ Created directory: {directory}")
 
 class ThreatDetectionTrainer:
     def __init__(self):
@@ -64,7 +64,9 @@ class ThreatDetectionTrainer:
                 print(f"Mean CV score: {cv_scores.mean():.4f} (+/- {cv_scores.std() * 2:.4f})")
             
             self.trained_models[model_name] = model
+            os.makedirs('models', exist_ok=True)
             joblib.dump(model, f'models/{model_name}_model.pkl')
+            print(f"✓ Model saved to models/{model_name}_model.pkl")
         
         return self.trained_models
     
@@ -124,6 +126,7 @@ class ThreatDetectionTrainer:
     
     def plot_confusion_matrix(self, y_true, y_pred, model_name):
         """Plot confusion matrix for model evaluation"""
+        os.makedirs('reports', exist_ok=True)
         cm = confusion_matrix(y_true, y_pred)
         plt.figure(figsize=(8, 6))
         sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
@@ -148,6 +151,7 @@ class ThreatDetectionTrainer:
             plt.xticks(range(min(20, len(feature_names))), 
                       [feature_names[i] for i in indices[:20]], rotation=45, ha='right')
             plt.tight_layout()
+            os.makedirs('reports', exist_ok=True)
             plt.savefig(f'reports/{model_name}_feature_importance.png', dpi=150)
             plt.show()
             
@@ -156,34 +160,79 @@ class ThreatDetectionTrainer:
             for i in range(min(10, len(feature_names))):
                 print(f"{i+1}. {feature_names[indices[i]]}: {importances[indices[i]]:.4f}")
 
+def create_sample_data():
+    """Create sample data if none exists"""
+    os.makedirs('data', exist_ok=True)
+    
+    # Create synthetic cybersecurity data
+    np.random.seed(42)
+    n_samples = 1000
+    
+    data = {
+        'duration': np.random.exponential(1.5, n_samples),
+        'protocol': np.random.choice([0, 1, 2], n_samples),
+        'service': np.random.choice([0, 1, 2, 3], n_samples),
+        'flag': np.random.choice([0, 1, 2], n_samples),
+        'src_bytes': np.random.lognormal(10, 2, n_samples),
+        'dst_bytes': np.random.lognormal(9, 2, n_samples),
+        'count': np.random.poisson(5, n_samples),
+        'srv_count': np.random.poisson(3, n_samples),
+    }
+    
+    df = pd.DataFrame(data)
+    
+    # Add anomalies (5% of data)
+    n_anomalies = int(0.05 * n_samples)
+    anomaly_indices = np.random.choice(n_samples, n_anomalies, replace=False)
+    
+    # Make anomalies suspicious
+    for idx in anomaly_indices:
+        df.loc[idx, 'src_bytes'] *= 100  # Large upload
+        df.loc[idx, 'duration'] = 0.01   # Very short
+        df.loc[idx, 'count'] *= 10       # Many connections
+    
+    df['label'] = 0
+    df.loc[anomaly_indices, 'label'] = 1
+    
+    df.to_csv('data/sample_logs.csv', index=False)
+    print(f"✓ Created sample data: {len(df)} records ({n_anomalies} threats)")
+    
+    return df
+
 def main():
     """Main training pipeline"""
-    from preprocess import SecurityDataPreprocessor
+    print("🚀 Starting Cyber Threat Detection Training...")
+    print("=" * 60)
     
-    # Initialize preprocessor
-    preprocessor = SecurityDataPreprocessor()
+    # Create directories
+    create_directories()
     
-    # Load sample data (replace with actual dataset)
-    # For demo, creating synthetic data
-    print("Creating synthetic data for demonstration...")
-    np.random.seed(42)
-    n_samples = 10000
-    n_features = 10
+    # Check if data exists
+    if not os.path.exists('data/sample_logs.csv'):
+        print("No data found. Creating sample data...")
+        df = create_sample_data()
+    else:
+        df = pd.read_csv('data/sample_logs.csv')
+        print(f"✓ Loaded data: {len(df)} records")
     
-    X = np.random.randn(n_samples, n_features)
-    # Create synthetic anomalies (5% of data)
-    anomalies = np.random.choice([0, 1], size=n_samples, p=[0.95, 0.05])
-    X[anomalies == 1] += 3  # Make anomalies different
+    print(f"\n📊 Dataset Info:")
+    print(f"   Shape: {df.shape}")
+    print(f"   Threat rate: {df['label'].mean():.2%}")
     
-    y = anomalies
+    # Prepare data
+    X = df.drop('label', axis=1)
+    y = df['label']
     
     # Split data
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.3, random_state=42, stratify=y
+    )
     
-    print(f"Training set: {X_train.shape[0]} samples")
-    print(f"Test set: {X_test.shape[0]} samples")
-    print(f"Threat ratio in training: {y_train.mean():.4f}")
-    print(f"Threat ratio in test: {y_test.mean():.4f}")
+    print(f"\n🔧 Data Split:")
+    print(f"   Training: {X_train.shape[0]} samples")
+    print(f"   Testing:  {X_test.shape[0]} samples")
+    print(f"   Train threat rate: {y_train.mean():.2%}")
+    print(f"   Test threat rate:  {y_test.mean():.2%}")
     
     # Train models
     trainer = ThreatDetectionTrainer()
@@ -192,9 +241,15 @@ def main():
     # Evaluate models
     results = trainer.evaluate_models(X_test, y_test)
     
-    # Feature importance (for tree-based models)
-    feature_names = [f'feature_{i}' for i in range(n_features)]
-    trainer.feature_importance_analysis('random_forest', feature_names)
+    # Feature importance
+    if 'random_forest' in trainer.trained_models:
+        trainer.feature_importance_analysis('random_forest', X.columns.tolist())
+    
+    print("\n" + "=" * 60)
+    print("✅ Training complete!")
+    print(f"   Models saved to: models/")
+    print(f"   Reports saved to: reports/")
+    print("=" * 60)
     
     return results
 
